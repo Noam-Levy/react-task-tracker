@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header'
 import Footer from './components/Footer'
-import Tasks from './components/Tasks';
-import AddTask from './components/AddTask';
-import About from './components/About';
+import Tasks from './components/Tasks'
+import AddTask from './components/AddTask'
+import About from './components/About'
 
 const SERVER_URL = 'http://localhost:5000/tasks'
 
@@ -67,15 +67,14 @@ function App() {
         <div className="container">
           <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
           <Routes>
-            <Route path="/" element={
-              <>
-                {showAddTask && <AddTask onAdd={addTask} />}
-                { tasks.length > 0 ?
-                <Tasks tasks={tasks} onDelete={deleteTask} onToggle={setReminder} /> :
-                'No tasks'
-                }
-              </> 
-              } />
+            <Route path="/" element=
+              {
+                <>
+                  {showAddTask && <AddTask onAdd={addTask} />}
+                  { tasks.length > 0 ? <Tasks tasks={tasks} onDelete={deleteTask} onToggle={setReminder} /> : 'No tasks' }
+                </> 
+              } 
+            />
             <Route path="/about" element={<About />} />
           </Routes>
           <Footer />
